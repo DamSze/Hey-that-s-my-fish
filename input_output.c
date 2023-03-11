@@ -11,8 +11,8 @@ void ask_for_dimensions_and_penguin_numb(Game_phase *game)
         printf("Enter number of penguins: ");
         scanf("%d",&peng_num);
    } while (m<=1||n<=1||peng_num<=0);
-    game->m=m;
-    game->n=n;
+    game->m=m+2;//we add 2 in order to make water around island
+    game->n=n+2;//
     game->number_of_penguins=peng_num;
 
 }

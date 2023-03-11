@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include"player_logic.h"
 Game_phase game;
-int can_penguin_move(int x,int y,int board[250][250]);
+int can_penguin_move(int x,int y,Game_phase game);
 void set_player_to_1(Game_phase *game)
 {
     game->current_player=1;
@@ -45,15 +45,15 @@ void change_player(Game_phase *game)
 
 }
 
-int are_there_any_possible_movements_for_any_player(Game_phase game,int board[250][250])
+int are_there_any_possible_movements_for_any_player(Game_phase game)
 {
     for(int i=0;i<game.m;i++)
     {
         for(int j=0;j<game.n;j++)
         {
-            if(board[i][j]==10||board[i][j]==20)
+            if(game.board[i][j]==10||game.board[i][j]==20)
             {
-                if(can_penguin_move(i,j,board))
+                if(can_penguin_move(i,j,game))
                 return 1;
             }
         }
@@ -63,7 +63,7 @@ int are_there_any_possible_movements_for_any_player(Game_phase game,int board[25
     
        
 }
-int are_there_any_posible_movement_for_current_player(Game_phase game,int board[250][250])
+int are_there_any_posible_movement_for_current_player(Game_phase game)
 {
     for(int i=0;i<game.m;i++)
     {
@@ -71,17 +71,17 @@ int are_there_any_posible_movement_for_current_player(Game_phase game,int board[
         {
             if(game.current_player==1)
             {
-                if(board[i][j]==10)
+                if(game.board[i][j]==10)
                  {
-                    if(can_penguin_move(i,j,board))
+                    if(can_penguin_move(i,j,game))
                     return 1;
                 }
             }
             if(game.current_player==2)
             {
-                if(board[i][j]==20)
+                if(game.board[i][j]==20)
                  {
-                    if(can_penguin_move(i,j,board))
+                    if(can_penguin_move(i,j,game))
                     return 1;
                 }
             }
@@ -93,19 +93,20 @@ int are_there_any_posible_movement_for_current_player(Game_phase game,int board[
     
        
 }
-int can_penguin_move(int y,int x,int board[250][250])
+int can_penguin_move(int y,int x,Game_phase game)
 {
-    int wrong_move=0;
-    if(board[y][x+1]==1||board[y][x+1]==2||board[y][x+1]==3)
-    return 1;
-    else if(board[y][x-1]==1||board[y][x-1]==2||board[y][x-1]==3)
-    return 1;
-    else if(board[y+1][x]==1||board[y+1][x]==2||board[y+1][x]==3)
-    return 1;
-    else if(board[y-1][x]==1||board[y-1][x]==2||board[y-1][x]==3)
-    return 1;
+    //checking if penguin can move with respect to matrix size
+    if(game.board[y][x+1] == 1 || game.board[y][x+1] == 2|| game.board[y][x+1] == 3)
+        return 1;
+    else if(game.board[y][x-1] == 1 || game.board[y][x-1] == 2 || game.board[y][x-1] == 3)
+        return 1;
+    else if(game.board[y+1][x] == 1 || game.board[y+1][x] == 2 || game.board[y+1][x] == 3)
+        return 1;
+    else if(game.board[y-1][x] == 1 || game.board[y-1][x] == 2 || game.board[y-1][x] == 3)
+        return 1;
     else
-    return 0;
+        return 0;
+
     
 
 }
