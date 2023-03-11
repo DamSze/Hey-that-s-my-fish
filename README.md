@@ -18,5 +18,6 @@
   - penguins can't move diagonally
   - move is compulsory
   - the game ends when no penguin can make a move or when all fish are collected
+  - players make moves in turns
   
 
