@@ -1,7 +1,6 @@
 #ifndef INPUT_OUTPUT_H_
 #define INPUT_OUTPUT_H_
 #include"structure.h"
-extern int board[250][250];
 void ask_for_dimensions_and_penguin_numb(Game_phase *game);
 void ask_for_placement(Game_phase *game);
 void get_movement(Game_phase *game);

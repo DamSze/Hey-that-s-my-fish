@@ -8,8 +8,6 @@
 #include"input_output.h"
 #include"game_logic.h"
 #include"player_logic.h"
-    int board[250][250];
-
 int main()
 {
 
@@ -21,7 +19,7 @@ int main()
    game.score_counter_2=0;
       /**placement phase**/
    ask_for_dimensions_and_penguin_numb(&game);
-   generate_board(board,game.m,game.n,game.number_of_penguins);
+   generate_board(&game);
    set_player_to_1(&game);
 
    while(penguins_left_of_any_player(game))
@@ -31,11 +29,11 @@ int main()
        {
            do
            {
-               show_board(game.m,game.n,game.current_player);
+               show_board(game);
                ask_for_placement(&game);
-           }while(!position_valid(game,board));
+           }while(!position_valid(game));
 
-           place_penguin(&game,board);
+           place_penguin(&game);
            change_player(&game);
        }
        else
@@ -44,41 +42,41 @@ int main()
        }
 
    }
-   show_board(game.m,game.n,game.current_player);
+   show_board(game);
             /** movement phase**/
   set_player_to_1(&game);
   
     while(are_there_any_fish_left(game))
     {
-        if(are_there_any_possible_movements_for_any_player(game,board))
+        if(are_there_any_possible_movements_for_any_player(game))
         {
-            if(are_there_any_posible_movement_for_current_player(game,board))
+            if(are_there_any_posible_movement_for_current_player(game))
             {
 
                 do
                 {
-                    show_board(game.m,game.n,game.current_player);
+                    show_board(game);
                     show_score(game);
                     get_movement(&game);
-                }while(!movement_forbidden(game,board));
+                }while(!movement_forbidden(game));
             }
             else
             {
                 change_player(&game);
                 do
                     {
-                        show_board(game.m,game.n,game.current_player);
+                        show_board(game);
                         show_score(game);
                         get_movement(&game);
-                    }while(!movement_forbidden(game,board));
+                    }while(!movement_forbidden(game));
 
             }
             increase_score(&game);
-            remove_fish(game,board);
-            move_penguin(game,board);
-            remove_ice_floe(game,board);
+            remove_fish(&game);
+            move_penguin(&game);
+            remove_ice_floe(&game);
             change_player(&game);
-            show_board(game.m,game.n,game.current_player);
+            show_board(game);
         }
         else
             break;

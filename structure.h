@@ -2,6 +2,7 @@
 #define STRUCTURE_H_
 typedef struct
 {
+    int board[250][250];
     int current_player;
     int m,n; /*dimensions of the board*/
     int number_of_penguins;
