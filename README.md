@@ -6,7 +6,7 @@
 </h1>
 
 <h4 align="center">Program made with classmates for uni classes</h4>
-<h4 align="center">Program allowing playing "Hey, that's my fish game against your friend loccaly"</h4>
+<h4 align="center">Program allowing playing "Hey, that's my fish" game against your friend locally</h4>
 
 <div align="center">
 
